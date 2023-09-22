@@ -1,6 +1,6 @@
 <template>
     <ul>
-      <TodoListItem v-for="todoItem in provideData.value.todoList" :key="todoItem.id" :item="todoItem" />
+      <TodoListItem v-for="todoItem in provideData" :key="todoItem.id" :item="todoItem" />
     </ul>
   </template>
 <script setup>

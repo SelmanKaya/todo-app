@@ -5,7 +5,15 @@
   <AddSection :addNewTodo="addNewTodo" @add-todo="addNewTodo" />
   <listSection />
   <button @click="newTodo">todo ekle</button>
-  <input v-if="showInput" v-model="textInput" @input="addNewTodo" />
+  <hr>
+  <!-- <label for="textTodo"></label> -->
+  <input v-if="showInput" id="textTodo" v-model="textInput"  @keydown.enter="todo(textTodo)"/> 
+  <ul>
+    <li>
+      {{ provideData.todoList }}
+    </li>
+    
+  </ul>
 </template>
 
 <script setup>
@@ -16,19 +24,22 @@ import listSection from './components/listSection.vue';
 
 const showInput = ref(false);
 const textInput = ref('');
+
 const provideData = ref({
-  todoList: [
-    { id: 1, text: "Deneme #2" },
-    { id: 2, text: "Deneme #2.1" },
-    { id: 3, text: "Deneme #2.2" },
-    { id: 4, text: "Deneme #2.3" },
-    { id: 5, text: "Deneme #2.4" },
-    { id: 6, text: "Deneme #2.5" }
-  ]
+  todoList: []
 });
 const newTodo = () => {
   showInput.value = !showInput.value;
 };
+const todo= (event) =>{
+  textInput.value = event.target.value
+  provideData.value.todoList.push({
+    id: new Date().getTime(),
+    text : textInput.value
+  })
+
+}
+console.log('provideData.todoList :>> ', provideData.todoList);
 
 const deleteItem = (todoItem) => {
   provideData.value.todoList = provideData.value.todoList.filter(t => t !== todoItem);
