@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <label for="todoText"></label>
     <input @keydown.enter="addNewTodo(todoText)" type="text" id="todoText" placeholder="Yenı todo..." />
   </template>
@@ -16,4 +16,4 @@ const todoText = ref("")
 //         const emit = defineEmits(["add-todo"]);
 //         todoText.value = null;
 //        }
-</script>
+</script> -->
