@@ -1,0 +1,21 @@
+{
+    "todo": "yapilacaklar",
+    "todoList": "Yapilacaklar listesi",
+    "addTodo":"Todo Ekle",
+    "enterTask" : "Yapilacak Ekle",
+    "addNewItem" :" Yapilacak giriniz ",
+    "categoryName": "Kategori Adi",
+    "myTodo": "Yapilacak Todo",
+    "delete": "Sil",
+    "enterImpotanceRating":"Onem Derecesi Girin",
+    "high": "Yuksek",
+    "middle":"Orta",
+    "low":"Dusuk",
+    "complated": "Tamamlandi",
+    "selectNewCategory":"Yeni Kategori Sec",
+    "general":"Genel",
+    "english":"Ingilizce",
+    "bills":"Faturalar",
+    "shopping":"Alisveris",
+    "project":"Proje"
+}

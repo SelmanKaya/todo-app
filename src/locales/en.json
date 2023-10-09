@@ -1,0 +1,21 @@
+{
+    "todo": "todo",
+    "todoList": "ToDo List",
+    "addTodo":"Add Todo",
+    "enterTask" : "Enter Task",
+    "addNewItem" :" Add New Item ",
+    "categoryName": "Category Name",
+    "myTodo": "My Todo",
+    "delete": "Delete",
+    "enterImpotanceRating":"Enter Importance Rating",
+    "high": "High",
+    "middle":"Middle",
+    "low":"Low",
+    "complated": "Complated",
+    "selectNewCategory":"Select New Category",
+    "general":"General",
+    "english":"English",
+    "bills":"Bills",
+    "shopping":"Shopping",
+    "project":"Project"
+}
