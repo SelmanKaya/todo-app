@@ -49,7 +49,7 @@
       </div>
     </div>
     <label for="lng"> Dil Seciniz</label>
-    <select v-model="language" @change="changeLanguage()" id="lng">
+    <select v-model="language" @change="setLanguage()" id="lng">
     <option value="tr">TR</option>
     <option value="en">EN</option>
   </select>
@@ -82,16 +82,29 @@ const provideData = ref({
   ]
 });
 
-localStorage.setItem("lang","")
-const language = ref('')
-const changeLanguage = () => {
-  localStorage.setItem("lang",language.value)
-  window.location.reload()
+const { t, locale, availableLocales } = useI18n({ useScope: 'global' })
+
+const currLocale = locale.getItem(localItems.lang)
+if (currLocale && availableLocales.includes(currLocale)) {
+  locale.value = currLocale
+  locale.setItem(localItems.lang, locale.value)
+} else if (!availableLocales.includes(navigator.language)) {
+  locale.value = 'tr'
+  locale.setItem(localItems.lang, locale.value)
 }
 
-onMounted(() =>{
-  language.value = localStorage.getItem("lang")
-})
+
+
+// localStorage.setItem("lang","")
+// const language = ref('')
+// const changeLanguage = () => {
+//   localStorage.setItem("lang",language.value)
+//   window.location.reload()
+// }
+
+// onMounted(() =>{
+//   language.value = localStorage.getItem("lang")
+// })
 
 
 const newTodo = () => {

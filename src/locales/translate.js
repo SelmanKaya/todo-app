@@ -2,17 +2,20 @@ import { createI18n } from 'vue-i18n'
 import { ref , watch} from 'vue';
 import en from "./en.json"
 import tr from "./tr.json"
+import { useI18n } from 'vue-i18n';
 
-const currentLocale = ref(localStorage.getItem("lang") || 'en');
+
 const i18n = createI18n({
-  locale: currentLocale.value , // Reactive olarak set etmedigi icin dili degistirdigimde local storage de degisiyo ama sayfayi anlik reload etmeden dilini degistirmiyo bende reload etmek istemedigim icin boyle biraktim 
+  locale: "" , // Reactive olarak set etmedigi icin dili degistirdigimde local storage de degisiyo ama sayfayi anlik reload etmeden dilini degistirmiyo bende reload etmek istemedigim icin boyle biraktim 
   messages: {
     en,
     tr
   } // set locale messages
 });
-watch(currentLocale, (newLocale) => {
-  i18n.global.locale = newLocale;
-  localStorage.setItem('lang', newLocale);
-});
+const { locale, availableLocales } = useI18n({ useScope: 'global' })
+
+const setLanguage = (lang) => {
+  locale.value = lang
+  locale.setItem(localItems.lang, locale.value)
+}
 export default i18n 
