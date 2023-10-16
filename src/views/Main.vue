@@ -49,7 +49,7 @@
       </div>
     </div>
     <label for="lng"> Dil Seciniz</label>
-    <select v-model="language" @change="setLanguage()" id="lng">
+    <select v-model="language" @change="setLanguage(language)" id="lng">
     <option value="tr">TR</option>
     <option value="en">EN</option>
   </select>
@@ -64,6 +64,8 @@ import { provide, ref , onMounted} from 'vue';
 import listSection from '../components/listSection.vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex'
+
+import { useI18n } from 'vue-i18n';
 const router = useRouter()
 const store = useStore()
 
@@ -82,14 +84,19 @@ const provideData = ref({
   ]
 });
 
-const { t, locale, availableLocales } = useI18n({ useScope: 'global' })
+const { t, locale, availableLocales, localItems } = useI18n()
 
-const currLocale = locale.getItem(localItems.lang)
+const currLocale = locale.getItem(localItems.lang) || "tr";
 if (currLocale && availableLocales.includes(currLocale)) {
   locale.value = currLocale
   locale.setItem(localItems.lang, locale.value)
 } else if (!availableLocales.includes(navigator.language)) {
   locale.value = 'tr'
+  locale.setItem(localItems.lang, locale.value)
+}
+
+const setLanguage = (lang) => {
+  locale.value = lang
   locale.setItem(localItems.lang, locale.value)
 }
 
