@@ -17,5 +17,8 @@
     "english":"Ingilizce",
     "bills":"Faturalar",
     "shopping":"Alisveris",
-    "project":"Proje"
+    "project":"Proje",
+    "chooseTodo":"YAPILACAK TODO ICIN BASLIK SECINIZ",
+    "chooseLanguage":"Dil Seciniz"
+
 }

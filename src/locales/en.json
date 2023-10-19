@@ -17,5 +17,8 @@
     "english":"English",
     "bills":"Bills",
     "shopping":"Shopping",
-    "project":"Project"
+    "project":"Project",
+    "chooseTodo":"CHOOSE THE TITLE FOR TODO",
+    "chooseLanguage":"Language"
+
 }

@@ -5,7 +5,7 @@ import router from './router/index.js'
 //import './assets/style.css'
 import "./index.css"
 import store from './store'
-import i18n from './locales/translate'
+import i18n from './locales/translate.js'
 
 const app = createApp(App)
 app.use(store)
