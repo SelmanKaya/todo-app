@@ -20,7 +20,7 @@
     <div class="bg-red-100 p-10 mx-auto rounded-lg shadow-lg mb-10 w-96 items-center">
       <ul>
         <li v-for="item in $store.state.todoList" :key="item.id">
-          <p class="font-semibold">{{ $t('categoryName')}}: {{ item.category }}</p> <!-- calismadi bende anlamadim -->
+          <p class="font-semibold">{{ $t('categoryName')}}: {{ $route.params.category}}</p> <!-- calismadi bende anlamadim -->
           <div class="font-semibold">
             {{ $t('myTodo')}} :
             {{ item.text }}
@@ -129,7 +129,7 @@ const disableCheckbox = (item) => {
     item.checked = true
   }
 };
-
+ 
 const goHome = () => {
   router.push({ name: 'homePage' })
 }
