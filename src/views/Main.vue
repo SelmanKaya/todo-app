@@ -20,7 +20,7 @@
     <div class="bg-red-100 p-10 mx-auto rounded-lg shadow-lg mb-10 w-96 items-center">
       <ul>
         <li v-for="item in $store.state.todoList" :key="item.id">
-          <p class="font-semibold">{{ $t('categoryName')}}: {{ $route.params.category}}</p> <!-- calismadi bende anlamadim -->
+          <p class="font-semibold">{{ $t('categoryName')}}: {{ newTodo.category}}</p> <!-- calismadi bende anlamadim -->
           <div class="font-semibold">
             {{ $t('myTodo')}} :
             {{ item.text }}
@@ -72,7 +72,7 @@ const store = useStore()
 const showInput = ref(false);
 const textInput = ref('');
 
-const onemText = ["yuksek", "orta", "dusuk"];
+const onemText = ["yuksek", "orta", "dusuk"]; 
 const language = ref("en");
 
 
@@ -86,8 +86,6 @@ const provideData = ref({
 });
 
 const { t, locale, availableLocales, localItems } = useI18n();
-
-
 
 
 const setLanguage = (lang) => {
@@ -104,7 +102,7 @@ const todo = () => {
     text: textInput.value,
     checked: false,
     onem: 0,
-    category: ""
+    category: router.query.category
   };
   if (newTodo.text == '') {
     alert("bos bırakılamaz")

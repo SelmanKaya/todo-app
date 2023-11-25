@@ -4,11 +4,13 @@ const routes = [
     {
         name  : "homePage",
         path : "/",
+        props: true,
         component : () =>  import("../views/homePage.vue")
     },
     {
         name : "mainPage",
         path : "/main",
+        props: true,
         component : () => import("../views/Main.vue")
     }
 ]
