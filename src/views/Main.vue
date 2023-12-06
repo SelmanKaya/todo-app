@@ -98,6 +98,7 @@ const setLanguage = (lang) => {
 
 const addTodo = () => {
   showInput.value = !showInput.value;
+  
 };
 
 const todo = () => {
