@@ -1,9 +1,10 @@
-<template>
-  <!-- <VuePreloader color="blue" scale="0.6" /> -->
+<template >
+  
 
   <h3 class="p-6 items-center text-3xl font-semibold">{{ $t('todoList')}}</h3>
   <!-- <AddSection :addNewTodo="addNewTodo" @add-todo="addNewTodo" /> -->
   <div>
+    <VuePreloader /> 
     <div class="flex flex-row">
       buraya da yan tarafa konulcak todo lar eklenıcek
     </div>
@@ -11,7 +12,7 @@
       <listSection />
       <button
         class="px-8 bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 rounded-full mt-4 transition-colors"
-        @click="newTodo">{{ $t('addTodo')}}</button>
+        @click="addTodo">{{ $t('addTodo')}}</button>
       <br>
       <!-- <label for="textTodo"></label> -->
       <input class="border-x-zinc-500 px-8 h-8 m-4 rounded-lg" v-if="showInput" id="textTodo" v-model="textInput"
@@ -60,21 +61,24 @@
 <script setup>
 import { provide, ref , onMounted} from 'vue';
 //import VuePreloader from '../components/VuePreloader.vue';
+import { VuePreloader } from 'vue-preloader';
 //preloader yaptik ama hatali biraz
 import listSection from '../components/listSection.vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex'
 
 import { useI18n } from 'vue-i18n';
+import NoWorkResult from 'postcss/lib/no-work-result';
 const router = useRouter()
 const store = useStore()
 
 const showInput = ref(false);
 const textInput = ref('');
 
-const onemText = ["yuksek", "orta", "dusuk"];
+const onemText = ["yuksek", "orta", "dusuk"]; 
 const language = ref("en");
 
+console.log('router :>> ', router);
 
 const provideData = ref({
   todoList: [
@@ -88,13 +92,11 @@ const provideData = ref({
 const { t, locale, availableLocales, localItems } = useI18n();
 
 
-
-
 const setLanguage = (lang) => {
   locale.value = lang
 }
 
-const newTodo = () => {
+const addTodo = () => {
   showInput.value = !showInput.value;
 };
 
@@ -104,7 +106,7 @@ const todo = () => {
     text: textInput.value,
     checked: false,
     onem: 0,
-    category: ""
+    category: router.currentRoute.value.query.category
   };
   if (newTodo.text == '') {
     alert("bos bırakılamaz")
@@ -130,6 +132,7 @@ const disableCheckbox = (item) => {
   }
 };
 
+ 
 const goHome = () => {
   router.push({ name: 'homePage' })
 }
