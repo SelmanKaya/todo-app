@@ -33,7 +33,11 @@
           <hr>
           <label for="derece">{{ $t('enterImpotanceRating')}}:</label>
           <select id="derece" name="color" class="rounded-sm">
-            <option v-for="(onem, index) in onemText" :selected="item.onem == index">{{ onem }}</option>
+            <!-- <option v-for="(onem, index) in onemText" :selected="item.onem == index">{{ onem }}</option> -->
+            <option>{{ $t('high')}}</option>
+            <option>{{ $t('middle') }}</option>
+            <option>{{ $t('low') }}</option>
+
           </select>
           <hr>
           <input type="checkbox" :id="item.id" @change="disableCheckbox(item)" :disabled="item.checked"
@@ -57,7 +61,7 @@
     <!-- {{ $createI18n.locale }} -->
   </div>
 </template>
-  
+
 <script setup>
 import { provide, ref , onMounted} from 'vue';
 //import VuePreloader from '../components/VuePreloader.vue';
@@ -75,7 +79,7 @@ const store = useStore()
 const showInput = ref(false);
 const textInput = ref('');
 
-const onemText = ["yuksek", "orta", "dusuk"]; 
+
 const language = ref("en");
 
 console.log('router :>> ', router);
